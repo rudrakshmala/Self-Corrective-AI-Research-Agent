@@ -1,0 +1,48 @@
+# ── LangGraph / LangChain Core ────────────────────────────────────────────────
+langgraph>=0.2.28
+langchain>=0.3.7
+langchain-core>=0.3.15
+langchain-groq>=0.1.0
+langchain-huggingface>=0.0.3
+sentence-transformers>=3.0.0
+langchain-community>=0.3.7
+langchain-chroma>=0.1.4
+
+# ── Vector Store ──────────────────────────────────────────────────────────────
+chromadb>=0.5.20
+
+# ── Web Search ────────────────────────────────────────────────────────────────
+tavily-python>=0.5.0
+langchain-tavily>=0.1.0
+
+# ── Embeddings ────────────────────────────────────────────────────────────────
+openai>=1.54.0
+tiktoken>=0.8.0
+
+# ── Structured Output / Validation ───────────────────────────────────────────
+pydantic>=2.9.0
+pydantic-settings>=2.5.0
+
+# ── Observability ─────────────────────────────────────────────────────────────
+logfire>=2.0.0
+logfire[openai]>=2.0.0
+
+# ── RAGAS Evaluation ─────────────────────────────────────────────────────────
+ragas>=0.2.6
+datasets>=3.1.0
+
+# ── Document Loaders ─────────────────────────────────────────────────────────
+pypdf>=5.0.0
+docx2txt>=0.8
+beautifulsoup4>=4.12.3
+
+# ── Testing ───────────────────────────────────────────────────────────────────
+pytest>=8.3.0
+pytest-asyncio>=0.24.0
+pytest-mock>=3.14.0
+
+# ── Utilities ─────────────────────────────────────────────────────────────────
+python-dotenv>=1.0.1
+rich>=13.9.0
+tenacity>=9.0.0
+httpx>=0.27.0

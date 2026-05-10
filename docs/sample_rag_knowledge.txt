@@ -1,0 +1,51 @@
+Retrieval-Augmented Generation (RAG) is an AI framework that enhances the capabilities of large language models (LLMs) by combining them with information retrieval systems.
+
+== What is RAG? ==
+
+RAG was introduced by Lewis et al. in 2020 in the paper "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks." The core idea is to retrieve relevant documents from an external knowledge base and use them as context when generating responses, rather than relying solely on the model's parametric memory.
+
+== Key Components ==
+
+1. Retriever: Performs semantic search over a document corpus using dense embeddings. Common choices include FAISS, ChromaDB, Pinecone, and Weaviate. The retriever converts queries and documents into high-dimensional vector representations using embedding models like OpenAI's text-embedding-3-small.
+
+2. Generator: A large language model (such as GPT-4o) that synthesises a response based on the retrieved context. The generator is constrained to use only the provided context, reducing hallucinations.
+
+3. Vector Store: A database optimised for similarity search over embedding vectors. ChromaDB is a popular open-source choice that can be run locally with persistent storage.
+
+== Why RAG Reduces Hallucinations ==
+
+LLMs hallucinate because they generate text based on statistical patterns learned during training, not verified facts. RAG grounds the generation in retrieved evidence, making every claim traceable to a source document. This significantly reduces the rate of factual errors.
+
+== LangGraph and RAG ==
+
+LangGraph is a library built on top of LangChain that enables stateful, cyclic computation graphs for multi-agent systems. Unlike linear LangChain chains, LangGraph supports:
+- Conditional branching based on runtime state
+- Cycles and loops (e.g., for self-correction)
+- Multi-agent coordination with shared state
+- Deterministic, compiled graph execution
+
+A Self-Corrective RAG system uses LangGraph to implement a feedback loop: if the generated answer contains hallucinations, the system re-generates the answer using the same retrieved context, up to a maximum iteration limit.
+
+== ChromaDB ==
+
+ChromaDB is an open-source, AI-native vector database. Key features:
+- Persistent local storage (SQLite-backed)
+- Support for multiple embedding functions
+- Simple Python API for CRUD operations
+- No external infrastructure required for development
+
+== Tavily Web Search ==
+
+Tavily is an AI-optimised search API designed specifically for LLM applications. It returns clean, structured search results without advertisements or JavaScript rendering requirements, making it ideal as a web search fallback in RAG systems.
+
+== RAGAS Evaluation Framework ==
+
+RAGAS (Retrieval-Augmented Generation Assessment) is a framework for evaluating RAG pipelines. Key metrics include:
+- Faithfulness: Measures whether all claims in the generated answer are supported by the retrieved context. Computed by checking each claim against source documents.
+- Answer Relevancy: Measures whether the answer actually addresses the question. Computed using embedding similarity between the question and generated answer.
+- Context Precision: Measures whether the retrieved documents are ranked with the most relevant ones first.
+- Context Recall: Measures whether the retrieved context contains all the information needed to answer the question (requires ground truth).
+
+== Logfire Observability ==
+
+Logfire is a Python observability platform developed by the Pydantic team. It provides structured logging, distributed tracing, and real-time dashboards. For LLM applications, it captures every prompt, completion, token count, and latency, enabling detailed analysis of model behaviour in production.
